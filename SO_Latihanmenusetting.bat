@@ -63,4 +63,4 @@ goto setting
 :back 
 goto setting 
 :exit 
-exit
+exit 
