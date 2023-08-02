@@ -1,0 +1,719 @@
+@echo off
+color 1
+:login
+cls 
+echo ===============================================
+echo                 LOGIN USER         
+echo ===============================================
+echo.
+set /p name=      User     :
+set /p password=  Password :
+if %password% ==  tiwi (
+ goto begin 
+ ) else (
+ echo Password salah 
+set /p x= enter......!!!
+goto login 
+)
+
+	:begin 
+	cls 
+	echo ----------------------------------------------
+	echo                 W E L C O M E
+	echo ----------------------------------------------
+	echo.
+	echo         [1]  menu akademik 
+	echo         [2]  komputer 
+	echo         [3]  makananan
+	echo         [88] begin
+	echo         [0]  exit
+
+		set /p "pilihmenu=Masukkan Pilihan Menu:"
+		if %pilihmenu%==1  goto menu akademik
+		if %pilihmenu%==2  goto komputer
+		if %pilihmenu%==3  goto makanan
+		if %pilihmenu%==88 goto begin
+		if %pilihmenu%==0 goto  exit 
+
+
+	:makanan 
+	cls
+	echo ------------------------------------
+	echo          MAKANAN 
+	echo ------------------------------------
+	echo  [1] nusantara
+	echo  [2] eropa 
+	echo  [88]begin
+    echo  [0] kembali
+	set /p "pilihmenu=Masukkan Pilihan Menu:"
+	if %pilihmenu%==1  goto nusantara
+    if %pilihmenu%==2  goto eropa
+	if %pilihmenu%==88 goto begin
+	if %pilihmenu%==0  goto back
+	
+	:nusantara 
+	cls 
+	echo ----------------------------------
+	echo            NUSANTARA
+	echo ----------------------------------
+	echo     [1] sate
+	echo     [2] rendang 
+	echo     [3] pecel
+	echo     [88] begin
+	echo     [0] kembali
+	set /p "pilihmenu=Masukkan Pilihan Menu:"
+	if %pilihmenu%==1  goto sate
+    if %pilihmenu%==2  goto rendang
+	if %pilihmenu%==3  goto pecel
+	if %pilihmenu%==88  goto begin
+    if %pilihmenu%==0  goto back
+	
+	:eropa 
+	cls 
+	echo ----------------------------------
+	echo             EROPA 
+	echo ----------------------------------
+	echo [1] pizza spaghety hamburger
+	set /p "pilihmenu=masukkan pilihan menu:"
+	if %pilihmenu%==1  goto  pizza 
+	
+	
+		:menu akademik
+		cls 
+		echo ------------------------------------------------
+		echo                   MENU AKADEMIK
+		echo ------------------------------------------------
+		echo.
+		echo         [1]  penilaian mahasiswa 
+		echo         [2]  laporan penilaian mahasiswa 
+		echo         [3]  perhitungan
+		echo         [99] menu akademik
+		echo         [88] begin
+		echo         [0] kembali
+
+		set /p "pilihmenu=Masukkan Pilihan Menu:"
+		if %pilihmenu%==1  goto penilaian mahasiswa
+		if %pilihmenu%==2  goto laporan penilaian mahasiswa
+		if %pilihmenu%==3  goto perhitungan
+		if %pilihmenu%==99 goto menu akademik
+		if %pilihmenu%==88 goto begin
+		if %pilihmenu%==0  goto exit 
+		
+		
+		:penilaian
+		cls
+		echo ---------------------------------------------
+		echo              PENILAIAN MAHASISWA                 
+		echo ---------------------------------------------
+		echo           [1]  nilai          
+		echo           [99] menu akademik  
+		echo           [88] begin 
+		echo           [0] kembali
+		echo.
+		set /p "pilihmenu=Masukkan Pilihan Menu:"
+		if "%pilihmenu%"=="1"   goto nilai
+		if "%pilihmenu%"=="99"  goto menu_akademik
+		if "%pilihmenu%"=="0"   goto back
+		if "%pilihmenu%"=="88"  goto begin
+		 
+		:nilai
+		cls	
+		echo ---------------------------------------------
+		echo            IDENTITAS MAHASISWA 
+		echo ---------------------------------------------
+		set /p nim=masukkan nim:
+		set /p nama=masukkan nama:
+		set /p kelas=masukkan kelas:
+		set /p prodi=masukkan prodi:
+		echo ---------------------------------------------
+		echo                    NILAI 
+		echo ---------------------------------------------
+		set /p bahasa indonesia=masukkan nilai bahasa indonesia:
+		set /p bahasa inggris=masukkan nilai bahasa inggris:
+		set /p pemrograman dasar=masukkan nilai pemrograman dasar:
+		set /p matematika=masukkan nilai matematika:
+		set /p kalkulus=masukkan nilai kalkulus:
+		set /p sistem operasi=masukkan nilai sistem operasi:
+		
+	   :back
+		cls
+		goto penilaian 
+		pause
+		
+	   :menu akademik 
+		cls
+		goto menu akademik 
+		pause 
+		
+	   :begin 
+		goto begin 
+		pause 
+		
+
+		:laporan
+		cls
+		echo ---------------------------------------------
+		echo         LAPORAN PENILAIAN MAHASISWA                 
+		echo ---------------------------------------------
+		echo           [1]  KHS     
+		echo           [99] menu akademik	
+		echo           [0]  Kembali             
+		echo           [88] begin
+		echo .
+		set /p "pilihmenu=Masukkan Pilihan Menu:"
+
+		if "%pilihmenu%"=="1"  goto KHS
+		if "%pilihmenu%"=="99" goto menu_akademik
+		if "%pilihmenu%"=="0"  goto back 
+		if "%pilihmenu%"=="88" goto begin
+
+		:KHS
+		cls
+		echo ---------------------------------------------
+		echo            IDENTITAS MAHASISWA 
+		echo ---------------------------------------------
+		set /p "nim=Masukkan NIM: "
+		set /p "nama=Masukkan Nama: "
+		set /p "kelas=Masukkan Kelas: "
+		set /p "prodi=Masukkan Program Studi: "
+		echo ---------------------------------------------
+		echo                    NILAI 
+		echo ---------------------------------------------
+		set /p "nilai_indo=Masukkan Nilai Bahasa Indonesia: "
+		set /p "nilai_ing=Masukkan Nilai Bahasa Inggris: "
+		set /p "nilai_pd=Masukkan Nilai Pemrograman Dasar: "
+		set /p "nilai_mtk=Masukkan Nilai Matematika: "
+		set /p "nilai_kal1=Masukkan Nilai Kalkulus: "
+		set /p "nilai_so=Masukkan Nilai Sistem Operasi: "
+
+		set /a rata=(nilai_indo + nilai_ing + nilai_pd + nilai_mtk + nilai_kal1 + nilai_so) / 6
+
+		rem menghitung grade
+		if %nilai_indo% gtr 0 (
+		  if %nilai_indo% leq 60 (
+			set grade_indo=C
+		  ) else if %nilai_indo% leq 75 (
+			set grade_indo=B
+		  ) else if %nilai_indo% leq 85 (
+			set grade_indo=AB
+		  ) else if %nilai_indo% leq 100 (
+			set grade_indo=A
+		  ) else (
+			set grade_indo=Grade Anda Tidak Ditemukan
+		  )
+		) else (
+		  set grade_indo=Grade Anda Tidak Ditemukan
+		)
+
+		if %nilai_ing% gtr 0 (
+		  if %nilai_ing% leq 60 (
+			set grade_ing=C
+		  ) else if %nilai_ing% leq 75 (
+			set grade_ing=B
+		  ) else if %nilai_ing% leq 85 (
+			set grade_ing=AB
+		  ) else if %nilai_ing% leq 100 (
+			set grade_ing=A
+		  ) else (
+			set grade_ing=Grade Anda Tidak Ditemukan
+		  )
+		) else (
+		  set grade_ing=Grade Anda Tidak Ditemukan
+		)
+
+		if %nilai_pd% gtr 0 (
+		  if %nilai_pd% leq 60 (
+			set grade_pd=C
+		  ) else if %nilai_pd% leq 75 (
+			set grade_pd=B
+		  ) else if %nilai_pd% leq 85 (
+			set grade_pd=AB
+		  ) else if %nilai_pd% leq 100 (
+			set grade_pd=A
+		  ) else (
+			set grade_pd=Grade Anda Tidak Ditemukan
+		  )
+		) else (
+		  set grade_pd=Grade Anda Tidak Ditemukan
+		)
+
+		if %nilai_mtk% gtr 0 (
+		  if %nilai_mtk% leq 60 (
+			set grade_mtk=C
+		  ) else if %nilai_mtk% leq 75 (
+			set grade_mtk=B
+		  ) else if %nilai_mtk% leq 85 (
+			set grade_mtk=AB
+		  ) else if %nilai_mtk% leq 100 (
+			set grade_mtk=A
+		  ) else (
+			set grade_mtk=Grade Anda Tidak Ditemukan
+		  )
+		) else (
+		  set grade_mtk=Grade Anda Tidak Ditemukan
+		)
+
+		if %nilai_kal1% gtr 0 (
+		  if %nilai_kal1% leq 60 (
+			set grade_kal1=C
+		  ) else if %nilai_kal1% leq 75 (
+			set grade_kal1=B
+		  ) else if %nilai_kal1% leq 85 (
+			set grade_kal1=AB
+		  ) else if %nilai_kal1% leq 100 (
+			set grade_kal1=A
+		  ) else (
+			set grade_kal1=Grade Anda Tidak Ditemukan
+		  )
+		) else (
+		  set grade_kal1=Grade Anda Tidak Ditemukan
+		)
+
+		if %nilai_so% gtr 0 (
+		  if %nilai_so% leq 60 (
+			set grade_so=C
+		  ) else if %nilai_so% leq 75 (
+			set grade_so=B
+		  ) else if %nilai_so% leq 85 (
+			set grade_so=AB
+		  ) else if %nilai_so% leq 100 (
+			set grade_so=A
+		  ) else (
+			set grade_so=Grade Anda Tidak Ditemukan
+		  )
+		) else (
+		  set grade_so=Grade Anda Tidak Ditemukan
+		)
+
+		if %rata% GEQ 0 (
+		  if %rata% LEQ 60 (
+			set grade_rata=C
+		  ) else if %rata% LEQ 75 (
+			set grade_rata=B
+		  ) else if %rata% LEQ 85 (
+			set grade_rata=AB
+		  ) else if %rata% LEQ 100 (
+			set grade_rata=A
+		  ) else (
+			set grade_rata=Grade Anda Tidak Ditemukan
+		  )
+		) else (
+		  set grade_rata=Grade Anda Tidak Ditemukan
+		)
+
+		echo -----------------------------------------
+		echo         Kartu Hasil Studi
+		echo    UNIVERSITAS SELAMAT SRI BATANG
+		echo -----------------------------------------
+		echo NIM          : %nim%
+		echo Nama Lengkap : %nama%
+		echo Kelas        : %kelas%
+		echo Program Studi: %prodi%
+		echo ----------------------------------------- 
+		echo No  Nama Makul        Nilai        Grade  
+		echo ----------------------------------------- 
+		echo 1. Bahasa Indonesia    : %nilai_indo%, %grade_indo%
+		echo 2. Bahasa Inggris      : %nilai_ing%, %grade_ing%
+		echo 3. Pemrograman Dasar   : %nilai_pd%, %grade_pd% 
+		echo 4. Matematika          : %nilai_mtk%, %grade_mtk% 
+		echo 5. Kalkulus 1          : %nilai_kal1%, %grade_kal1% 
+		echo 6. Sistem Operasi      : %nilai_so%, %grade_so% 
+		echo -------------------------------------------
+		echo Rata - rata            : %rata% 
+		echo Kategori               : %grade_rata%
+        pause
+		
+		
+		:menu_akademik
+		cls
+		goto menu_akademik 
+		pause 
+		
+		:begin 
+		goto begin 
+		pause 
+		
+		:back
+		cls
+		goto menu_akademik
+		pause 
+        
+		
+		:perhitungan
+		cls
+		echo ---------------------------------------------
+		echo                PERHITUNGAN                 
+		echo ---------------------------------------------
+		echo           [1] perhitungan segitiga 
+		echo           [2] perhitungan persegi panjang 
+		echo           [99]menu akademik 	
+		echo           [0] kembali             
+		echo           [88] begin
+		echo .
+		set /p "pilihmenu=Masukkan Pilihan Menu:"
+		if "%pilihmenu%"=="1"  goto segitiga
+		if "%pilihmenu%"=="2"  goto persegi
+		if "%pilihmenu%"=="99" goto menu_akademik
+		if "%pilihmenu%"=="0"  goto back
+		if "%pilihmenu%"=="88" goto begin
+
+		:segitiga
+		cls
+		set /p alas=Masukkan Nilai Alas:
+		set /p tinggi=Masukkan Nilai Tinggi:
+		set /a luas=%alas%*%tinggi%/2
+
+		if %luas% GEQ 500 (
+		   set grade=Kategori Besar 
+		) else if %luas% GEQ 100 (
+		   set grade=Kategori Sedang
+		) else (
+		   set grade=Kategori Kecil
+		) 
+
+		cls 
+		echo -------------------------------------------------------
+		echo             PERHITUNGAN LUAS SEGITIGA 
+		echo -------------------------------------------------------
+		echo Alas  : %alas%
+		echo Tinggi: %tinggi%
+		echo -------------------------------------------------------
+		echo Luas Segitiga tersebut adalah : %luas%
+		echo Kategori bangunannya adalah   : %grade%
+		
+		:back 
+		pause
+		cls
+		goto perhitungan
+
+		:persegi
+		cls
+		set /p p=Masukkan Panjang:
+		set /p l=Masukkan Lebar:
+		set /a luas=%p%*%l%
+
+		if %luas% GEQ 500 (
+		   set grade=Kategori Besar
+		) else if %luas% GEQ 100 (
+		   set grade=Kategori Sedang
+		) else (
+		   set grade=Kategori Kecil
+		)
+
+		cls
+		echo -------------------------------
+		echo      Data Luas Bangunan
+		echo -------------------------------
+		echo Panjang Bangunan: %p%
+		echo Lebar Bangunan  : %l%
+		echo Luas Bangunan   : %luas%
+		echo Kategori        : %grade%
+		echo -------------------------------
+		pause
+		
+		:menu_akademik 
+		cls 
+		goto menu akademik 
+		pause 
+		
+		:back 
+		cls
+		goto perhitungan
+		pause 
+		
+		:begin 
+		goto begin 
+		pause 
+
+				:komputer
+				cls 
+				echo ------------------------------------------------
+				echo                   KOMPUTER 
+				echo ------------------------------------------------
+				echo.
+				echo         [1]  perbaikan komputer 
+				echo         [2]  jaringan komputer
+				echo         [3]  aplikasi 
+				echo         [4]  setting
+				echo         [88] begin
+				echo         [0]  exit
+				
+				set /p "pilihmenu=Masukkan Pilihan Menu:"
+				if %pilihmenu%==1  goto perbaikan komputer
+				if %pilihmenu%==2  goto jaringan komputer
+				if %pilihmenu%==3  goto aplikasi
+				if %pilihmenu%==4  goto setting 
+				if %pilihmenu%==88 goto begin
+				if %pilihmenu%==0  goto exit 
+
+				:perbaikan
+				cls
+				echo ---------------------------------------------
+				echo           PERBAIKAN KOMPUTER                
+				echo ---------------------------------------------
+				echo           [1]  defrag
+				echo           [2]  disk clean up
+				echo           [3]  penggunaan cpu dan ram 
+				echo           [11] komputer 			
+				echo           [0]  kembali	
+				echo           [88] begin
+				echo.
+				set /p "pilihmenu=Masukkan Pilihan Menu:"
+				if "%pilihmenu%"=="1"  goto defrag
+				if "%pilihmenu%"=="2"  goto diskcleanup
+				if "%pilihmenu%"=="3"  goto penggunaan
+				if "%pilihmenu%"=="11" goto komputer
+				if "%pilihmenu%"=="0"  goto back 
+				if "%pilihmenu%"=="88" goto begin 
+	  
+				:defrag
+				echo Menjalankan utilitas defrag...
+				defrag
+				echo Proses defrag telah selesai.
+				echo.
+				pause 
+				goto perbaikan
+				
+				:diskcleanup 
+				echo Menjalankan utilitas pembersih...
+				cleanmgr 
+				echo Proses pembersihan selesai.
+				echo.
+				pause 
+				goto perbaikan 
+				
+				:penggunaan 
+				echo Menjalankan Task Manager...
+				taskmgr
+				echo.
+				echo Penggunaan CPU dan RAM telah diperiksa.
+				pause
+				goto perbaikan
+
+				:komputer
+				goto komputer
+				pause 
+				
+				:back
+				goto kembali 
+				pause 
+				
+				:begin 
+				goto begin 
+				pause 
+				
+				
+			   :jaringan
+				cls
+				echo ---------------------------------------------
+				echo            JARINGAN KOMPUTER                
+				echo ---------------------------------------------
+				echo           [1]  ip confiq
+				echo           [2]  ping domain
+				echo           [3]  setting connection
+				echo           [4]  diagnostic tool
+				echo           [11] komputer
+				echo           [0]  kembali
+				echo           [88] begin
+				echo .
+				set /p "pilihmenu=Masukkan Pilihan Menu:"
+				if %pilihmenu%==1   goto ip
+				if %pilihmenu%==2   goto domain
+				if %pilihmenu%==3   goto connection
+				if %pilihmenu%==4   goto tool
+				if %pilihmenu%==11  goto komputer
+				if %pilihmenu%==0   goto back
+				if %pilihmenu%==88  goto begin
+
+				:ip
+				cls
+				ipconfig
+				pause
+				goto jaringan 
+
+				:domain 
+				cls
+				set /p domain=masukkan nama domain
+				ping %domain%
+				pause 
+				goto jaringan 
+				pause
+
+				:connection
+				cls
+				start ncpa.cpl
+				pause 
+				goto jaringan
+
+				:tool
+				cls
+				start dxdiag.exe
+				pause 
+				goto jaringan 
+				
+				:komputer 
+				cls 
+				goto komputer 
+				pause 
+				
+				:back 
+				cls 
+				goto jaringan 
+				pause 
+				
+				:begin 
+				goto begin 
+				pause 
+
+				:aplikasi 
+				cls
+				echo ---------------------------------------------
+				echo                 APLIKASI                
+				echo ---------------------------------------------
+				echo           [1]  microsoft word 
+				echo           [2]  microsoft excel
+				echo           [3]  microsoft powerpoint 
+				echo           [4]  zoom
+				echo           [11] komputer
+				echo           [0]  kembali
+				echo           [88] begin			
+				echo.
+				set /p "pilihmenu=Masukkan Pilihan Menu:"
+				if "%pilihmenu%"=="1"   goto word
+				if "%pilihmenu%"=="2"   goto excel
+				if "%pilihmenu%"=="3"   goto powerpoint
+				if "%pilihmenu%"=="4"   goto zoom
+				if "%pilihmenu%"=="11"  goto komputer
+				if "%pilihmenu%"=="0"   goto back
+				if "%pilihmenu%"=="88"  goto begin
+
+				:word 	
+				cls 
+				start word
+				goto menu aplikasi
+				pause
+				
+				:excel
+				cls 
+				start excel
+				goto aplikasi
+				pause
+				
+				:powerpoint 
+				cls 
+				start powerpoint
+				goto aplikasi
+				pause
+				
+				:zoom
+				cls  
+				start zoom
+				goto aplikasi 
+				pause 
+				
+				:komputer 
+				cls 
+				goto komputer 
+				pause 
+				
+				:back 
+				cls 
+				goto aplikasi 
+				pause 
+				
+				:begin 
+				goto begin 
+				pause 
+				
+			   :setting
+				cls 
+				echo ---------------------------------------------
+				echo          SETTING KOMPUTER                    
+				echo ---------------------------------------------
+				echo         [1] Setting Keyboard 
+				echo         [2] Setting Language
+				echo         [3] Setting date              
+				echo         [4] Add User           
+				echo         [5] Sound Control     
+				echo         [6] Open Startup 
+				echo         [7] Chrome 
+				echo         [8] registering 
+				echo         [11]komputer
+				echo         [0] Kembali         
+				echo         [88]begin
+				
+				echo.
+				set /p "pilihmenu=Masukkan Pilihan Menu:"
+				if %pilihmenu%==1  goto keyboard 
+				if %pilihmenu%==2  goto Language 
+				if %pilihmenu%==3  goto Date 
+				if %pilihmenu%==4  goto User 
+				if %pilihmenu%==5  goto sound 
+				if %pilihmenu%==6  goto startup 
+				if %pilihmenu%==7  goto chrome
+				if %pilihmenu%==8  goto registering
+				if %pilihmenu%==11 goto komputer
+				if %pilihmenu%==0  goto back
+				if %pilihmenu%==88 goto begin  
+
+				:keyboard 
+				cls 
+				start control keyboard
+				goto setting
+				pause 
+				
+				:Language 
+				cls 
+				start intl.cpl
+				goto setting 
+				pause
+				
+				:Date 
+				cls 
+				start timedate.cpl
+				goto setting 
+				
+				:User 
+				cls 
+				start Netplwiz.exe 
+				goto setting 
+				pause 
+				
+				:sound 
+				cls 
+				start SndVol.exe 
+				goto setting 
+				pause 
+				start SndVol.exe 
+				goto setting 
+				pause 
+				
+				:startup 
+				start msconfig
+				goto setting 
+				pause 
+				
+				:chrome 
+				"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+				goto setting 
+				
+				:registering
+				cls
+				start regedit
+				pause 
+				goto jaringan
+				
+				:komputer 
+				cls 
+				goto komputer 
+				pause 
+				
+				:back 
+				cls 
+				goto setting 
+				pause 
+				
+				:begin  
+				goto begin 
+				pause 
+
